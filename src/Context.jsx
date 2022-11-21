@@ -3,9 +3,12 @@ const Context = createContext();
 
 const ContextProvider = ({ children }) => {
   const [nav, setNav] = useState(false);
+  const [num, setNum] = useState(0);
 
   return (
-    <Context.Provider value={{ nav, setNav }}>{children}</Context.Provider>
+    <Context.Provider value={{ nav, setNav, num, setNum }}>
+      {children}
+    </Context.Provider>
   );
 };
 

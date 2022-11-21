@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Sidebar from "./sidebar";
-import { Context } from "../Context";
-import { useContext } from "react";
+import Sidebar from "./Sidebar";
+import { Context } from "../../Context";
 
 const Header = () => {
   const { nav, setNav } = useContext(Context);
   return (
-    <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center">
-      <Sidebar />
+    <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center mb-20 ">
+      {nav && <Sidebar />}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -62,11 +61,11 @@ const Header = () => {
       <div className="flex justify-between items-center max-sm:min-w-[5rem] w-20 h-14">
         <img
           className=" leading-3 cursor-pointer"
-          src="../../public/assets/icon-cart.svg"
+          src="../../assets/icon-cart.svg"
         />
         <img
           className="h-1/2 leading-3 cursor-pointer"
-          src="../../public/assets/imageAvatar.png"
+          src="../../assets/imageAvatar.png"
         />
       </div>
     </header>
