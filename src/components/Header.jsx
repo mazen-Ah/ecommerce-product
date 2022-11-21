@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import avatar from "../../public/assets/imageAvatar.png";
-import cartIcon from "../../public/assets/icon-cart.svg";
+import Sidebar from "./sidebar";
+import { Context } from "../Context";
+import { useContext } from "react";
 
 const Header = () => {
+  const { nav, setNav } = useContext(Context);
   return (
-    <header className="flex gap-10 flex justify-between container px-6 py-4 shadow mx-auto items-center text-center ">
+    <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center">
+      <Sidebar />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -13,6 +16,9 @@ const Header = () => {
         strokeWidth="1.5"
         stroke="currentColor"
         className=" w-1/12 sm:hidden"
+        onClick={() => {
+          setNav(true);
+        }}
       >
         <path
           strokeLinecap="round"
@@ -25,31 +31,43 @@ const Header = () => {
         <Link to={""}>sneakers</Link>
       </h1>
       <nav className="flex max-sm:hidden">
-        <ul className="flex gap-4">
-          <li className="sm:p-1 ">
-            <Link className="sm:p-1 opacity-60 hover:opacity-100">
+        <ul className="flex gap-4 ">
+          <li className="sm:p-1 group relative after:content-[''] after:absolute after:left-0 after:-bottom-[90%] hover:after:bg-main after:w-full after:h-1 after:rounded-t">
+            <Link className="sm:p-1 opacity-60 group-hover:opacity-100">
               Collections
             </Link>
           </li>
-          <li className="sm:p-1">
-            <Link className=" sm:p-1 opacity-60 hover:opacity-100 after:content-['']">
+          <li className="sm:p-1  group  relative after:content-[''] after:absolute after:left-0 after:-bottom-[90%] hover:after:bg-main after:w-full after:h-1 after:rounded-t">
+            <Link className=" sm:p-1 opacity-60 group-hover:opacity-100 ">
               Men
             </Link>
           </li>
-          <li className="sm:p-1">
-            <Link className="sm:p-1 opacity-60 hover:opacity-100">Women</Link>
+          <li className="sm:p-1  group  relative after:content-[''] after:absolute after:left-0 after:-bottom-[90%] hover:after:bg-main after:w-full after:h-1 after:rounded-t">
+            <Link className="sm:p-1 opacity-60 group-hover:opacity-100">
+              Women
+            </Link>
           </li>
-          <li className="sm:p-1">
-            <Link className="sm:p-1 opacity-60 hover:opacity-100">About</Link>
+          <li className="sm:p-1 transform group relative after:content-[''] after:absolute after:left-0 after:-bottom-[90%] hover:after:bg-main after:w-full after:h-1 after:rounded-t">
+            <Link className="sm:p-1 opacity-60 group-hover:opacity-100">
+              About
+            </Link>
           </li>
-          <li className="sm:p-1">
-            <Link className="sm:p-1 opacity-60 hover:opacity-100">Contact</Link>
+          <li className="sm:p-1   group relative after:content-[''] after:absolute after:left-0 after:-bottom-[90%] hover:after:bg-main after:w-full after:h-1 after:rounded-t">
+            <Link className="sm:p-1 opacity-60 group-hover:opacity-100">
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>
       <div className="flex justify-between items-center max-sm:min-w-[5rem] w-20 h-14">
-        <img className=" leading-3 cursor-pointer" src={cartIcon} />
-        <img className="h-1/2 leading-3 cursor-pointer" src={avatar} />
+        <img
+          className=" leading-3 cursor-pointer"
+          src="../../public/assets/icon-cart.svg"
+        />
+        <img
+          className="h-1/2 leading-3 cursor-pointer"
+          src="../../public/assets/imageAvatar.png"
+        />
       </div>
     </header>
   );

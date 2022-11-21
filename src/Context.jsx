@@ -1,8 +1,12 @@
-import React, { createContext } from "react";
+import React, { useState, createContext } from "react";
 const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-  return <Context.Provider value="s">{children}</Context.Provider>;
+  const [nav, setNav] = useState(false);
+
+  return (
+    <Context.Provider value={{ nav, setNav }}>{children}</Context.Provider>
+  );
 };
 
 export { ContextProvider, Context };
