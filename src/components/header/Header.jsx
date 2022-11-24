@@ -5,8 +5,8 @@ import Sidebar from "./Sidebar";
 import { Context } from "../../Context";
 
 const Header = () => {
-  const { nav, setNav } = useContext(Context);
-  const [cart, setCart] = useState(true);
+  const { nav, setNav, numberOfProducts } = useContext(Context);
+  const [cart, setCart] = useState(false);
   return (
     <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center sm:mb-20 ">
       {nav && <Sidebar />}
@@ -61,18 +61,27 @@ const Header = () => {
         </ul>
       </nav>
       <div className="flex justify-between items-center max-sm:min-w-[5rem] w-20 h-14 relative">
-        <img
-          className=" leading-3 cursor-pointer"
-          src="../../assets/icon-cart.svg"
-          onClick={() => {
-            setCart((prevCart) => !prevCart);
-          }}
-        />
-        {cart && <Cart />}
-        <img
-          className="h-1/2 leading-3 cursor-pointer"
-          src="../../assets/imageAvatar.png"
-        />
+        <div className=" relative">
+          {numberOfProducts > 0 && (
+            <span className="absolute w-4  bg-main rounded-3xl text-white font-semibold -top-2 -right-1 z-10 text-xs text-center">
+              {numberOfProducts}
+            </span>
+          )}
+
+          <div className={`leading-3 relative cursor-pointer `}>
+            <img
+              className="w-full"
+              src="../../assets/icon-cart.svg"
+              onClick={() => {
+                setCart((prevCart) => !prevCart);
+              }}
+            />
+          </div>
+          {cart && <Cart />}
+        </div>
+        <div className="max-w-[2rem] leading-3 cursor-pointer">
+          <img className="w-full" src="../../assets/imageAvatar.png" />
+        </div>
       </div>
     </header>
   );

@@ -14,7 +14,7 @@ const Img = ({ img, active, setMainImg }) => {
         onClick={() => {
           setMainImg(img);
         }}
-        className="rounded-lg"
+        className="rounded-lg hover:opacity-70"
         src={thumbnail}
         alt={alt}
       />

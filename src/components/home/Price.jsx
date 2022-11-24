@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../Context";
 import Btn from "./Btn";
 
 const Price = () => {
-  const [price, setPrice] = useState(250.0);
-  const [discounts, setDiscounts] = useState(50);
+  const { price, discounts } = useContext(Context);
   const pri = () => {
     if (discounts) {
       return (

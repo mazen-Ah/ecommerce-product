@@ -4,7 +4,7 @@ import { Context } from "../../Context";
 const Btn = () => {
   const { num, setNum } = useContext(Context);
   return (
-    <div className="flex space-x-2 max-sm:flex-col justify-center items-center">
+    <div className="flex space-x-2 max-sm:flex-col justify-center items-center max-sm:m-0 max-lg:xl:-mx-8">
       <div className="flex w-2/5 space-x-1 max-sm:w-full justify-center items-center">
         <button className="flex max-sm:max-w-full  max-sm:w-5/6 justify-center items-center  max-sm:rounded-xl">
           <span
@@ -22,13 +22,13 @@ const Btn = () => {
             onClick={() => {
               setNum((prevNum) => prevNum + 1);
             }}
-            className="bg-[#F7F8FD] w-10 max-sm:w-full  h-10 hover:opacity-60  text-center rounded flex justify-center items-center text-main text-3xl"
+            className="bg-[#F7F8FD] w-10 max-sm:w-full max-md:w-20  h-10 hover:opacity-60  text-center rounded flex justify-center items-center text-main text-3xl"
           >
             +
           </span>
         </button>
-        <BtnCart />
       </div>
+      <BtnCart />
     </div>
   );
 };
