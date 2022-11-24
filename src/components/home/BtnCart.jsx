@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../Context";
 
 const BtnCart = () => {
+  const { num, setNum, setNumberOfProducts } = useContext(Context);
+  function addToCart() {
+    setNumberOfProducts((prevProducts) => prevProducts + num, setNum(0));
+  }
   return (
-    <button className="flex bg-[#FF7D1B] hover:opacity-60 items-center w-5/6 h-10 justify-center py-4 rounded text-white gap-4 box-border">
+    <button
+      onClick={addToCart}
+      className=" flex bg-[#FF7D1B] max-sm:mt-4 hover:opacity-60 items-center w-5/6 h-10 justify-center py-4 rounded max-sm:rounded-xl text-white max-sm:mb-4 box-border"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

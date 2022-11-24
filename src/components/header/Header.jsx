@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
+import Cart from "./Cart";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { Context } from "../../Context";
 
 const Header = () => {
   const { nav, setNav } = useContext(Context);
+  const [cart, setCart] = useState(true);
   return (
-    <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center mb-20 ">
+    <header className="relative flex gap-10 justify-between container px-6 py-4 shadow mx-auto items-center text-center sm:mb-20 ">
       {nav && <Sidebar />}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +16,7 @@ const Header = () => {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className=" w-1/12 sm:hidden"
+        className=" w-1/12 sm:hidden cursor-pointer hover:text-main hover:transition-all"
         onClick={() => {
           setNav(true);
         }}
@@ -58,11 +60,15 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="flex justify-between items-center max-sm:min-w-[5rem] w-20 h-14">
+      <div className="flex justify-between items-center max-sm:min-w-[5rem] w-20 h-14 relative">
         <img
           className=" leading-3 cursor-pointer"
           src="../../assets/icon-cart.svg"
+          onClick={() => {
+            setCart((prevCart) => !prevCart);
+          }}
         />
+        {cart && <Cart />}
         <img
           className="h-1/2 leading-3 cursor-pointer"
           src="../../assets/imageAvatar.png"

@@ -3,13 +3,13 @@ import Btn from "./Btn";
 
 const Price = () => {
   const [price, setPrice] = useState(250.0);
-  const [discounts, setDiscounts] = useState(80);
+  const [discounts, setDiscounts] = useState(50);
   const pri = () => {
     if (discounts) {
       return (
         <>
-          <div className="flex flex-col">
-            <div className="flex items-center">
+          <div className="flex sm:flex-col justify-between max-sm:w-full max-sm:p-4 max-sm:pb-0">
+            <div className="flex items-center  ">
               <div>${price - (price * discounts) / 100}</div>
               <span className="text-main text-sm ml-4 bg-amber-100 w-10 text-center rounded h-5">
                 {discounts}%

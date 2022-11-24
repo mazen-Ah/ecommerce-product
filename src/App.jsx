@@ -9,7 +9,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route index path="" element={<Product />}></Route>
-          <Route index path="*" element={<h2>This Page not Found</h2>}></Route>
+          <Route path="*" element={<h2>This Page not Found</h2>}></Route>
         </Routes>
       </Router>
     </ContextProvider>
